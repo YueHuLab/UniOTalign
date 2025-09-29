@@ -1,0 +1,160 @@
+Some weights of EsmModel were not initialized from the model checkpoint at local_esm_model and are newly initialized: ['pooler.dense.bias', 'pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/unbalanced/_sinkhorn.py:740: RuntimeWarning: divide by zero encountered in divide
+  v = (b / Ktu) ** fi_2
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/unbalanced/_sinkhorn.py:751: UserWarning: Numerical errors at iteration 0
+  warnings.warn("Numerical errors at iteration %s" % i)
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/unbalanced/_sinkhorn.py:738: RuntimeWarning: divide by zero encountered in divide
+  u = (a / Kv) ** fi_1
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/gromov/_unbalanced.py:383: RuntimeWarning: divide by zero encountered in scalar divide
+  pi_feat = nx.sqrt(mass / nx.sum(pi_feat)) * pi_feat
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/gromov/_unbalanced.py:383: RuntimeWarning: invalid value encountered in multiply
+  pi_feat = nx.sqrt(mass / nx.sum(pi_feat)) * pi_feat
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/gromov/_unbalanced.py:410: RuntimeWarning: divide by zero encountered in scalar divide
+  pi_samp = nx.sqrt(mass / nx.sum(pi_samp)) * pi_samp  # shape nx x ny
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/gromov/_unbalanced.py:410: RuntimeWarning: invalid value encountered in multiply
+  pi_samp = nx.sqrt(mass / nx.sum(pi_samp)) * pi_samp  # shape nx x ny
+[KeOps] Warning : CUDA libraries not found or could not be loaded; Switching to CPU only.
+✅ Found Apple Silicon GPU. Using MPS for acceleration.
+
+--- Configuration ---
+  Sequence A: d1b6a_1.pdb (Chain: auto)
+  Sequence B: d1bia_1.pdb (Chain: auto)
+  Model Path: local_esm_model
+  Hyperparameters: alpha=0.9, reg_m=0.1, initial_epsilon=0.001
+---------------------
+STEP 1: Loading sequences...
+ℹ️ No chain specified for d1b6a_1.pdb, auto-selecting first available chain: ' '
+ℹ️ No chain specified for d1bia_1.pdb, auto-selecting first available chain: ' '
+  - Loaded Sequence A: 74 residues.
+  - Loaded Sequence B: 63 residues.
+
+STEP 2: Loading ESM-2 model from 'local_esm_model'...
+
+STEP 3: Generating residue embeddings...
+
+STEP 4: Calculating matrices for FUGW solver...
+  - [Matrix Stats] Feature Cost (M): Min=0.221172, Max=1.102510, Mean=0.621199, Non-Zero=4662/4662 (100.00%)
+  - [Matrix Stats] Intra-Distance A (Cx): Min=0.000000, Max=1.000000, Mean=0.171233, Non-Zero=5402/5476 (98.65%)
+  - [Matrix Stats] Intra-Distance B (Cy): Min=0.000000, Max=1.000000, Mean=0.172043, Non-Zero=3906/3969 (98.41%)
+
+STEP 5: Running Fused Unbalanced Gromov-Wasserstein solver...
+  - Attempt 1/6 with epsilon = 1.0e-03...
+  - ⚠️ Solver failed on attempt 1: There is NaN in coupling.                           Adjust the relaxation or regularization parameters.
+  - Retrying with a larger epsilon...
+  - Attempt 2/6 with epsilon = 5.0e-03...
+  - ⚠️ Solver failed on attempt 2: There is NaN in coupling.                           Adjust the relaxation or regularization parameters.
+  - Retrying with a larger epsilon...
+  - Attempt 3/6 with epsilon = 2.5e-02...
+  - ⚠️ Solver failed on attempt 3: There is NaN in coupling.                           Adjust the relaxation or regularization parameters.
+  - Retrying with a larger epsilon...
+  - Attempt 4/6 with epsilon = 1.2e-01...
+  - ⚠️ Solver failed on attempt 4: There is NaN in coupling.                           Adjust the relaxation or regularization parameters.
+  - Retrying with a larger epsilon...
+  - Attempt 5/6 with epsilon = 6.2e-01...
+  - Solver succeeded in 1.18 seconds.
+  - [Matrix Stats] Final Transport Plan (T): Min=0.000100, Max=0.000244, Mean=0.000163, Non-Zero=4662/4662 (100.00%)
+
+STEP 6: Extracting optimal 1-to-1 assignment...
+
+--- Raw Aligned Pairs (Before Filtering) ---
+SeqA PDB Num   AA   <->   SeqB PDB Num   AA  
+---------------------------------------------
+375            H    <->   1              M   
+381            S    <->   59             S   
+383            Y    <->   58             Y   
+385            K    <->   2              K   
+386            N    <->   4              N   
+387            F    <->   51             F   
+388            D    <->   3              D   
+389            V    <->   56             K   
+390            G    <->   55             G   
+391            H    <->   57             G   
+392            V    <->   53             V   
+393            P    <->   7              P   
+394            I    <->   46             W   
+395            R    <->   5              T   
+396            L    <->   34             A   
+397            P    <->   54             P   
+398            R    <->   6              V   
+399            T    <->   52             T   
+400            K    <->   38             K   
+401            H    <->   39             H   
+402            L    <->   10             L   
+403            L    <->   11             I   
+404            N    <->   37             N   
+405            V    <->   13             L   
+406            I    <->   14             L   
+407            N    <->   16             N   
+408            E    <->   27             E   
+409            N    <->   18             E   
+410            F    <->   19             F   
+411            G    <->   17             G   
+412            T    <->   21             S   
+413            L    <->   22             G   
+414            A    <->   12             A   
+415            F    <->   24             Q   
+416            C    <->   20             H   
+417            R    <->   33             R   
+418            R    <->   26             G   
+419            W    <->   28             T   
+420            L    <->   25             L   
+421            D    <->   49             D   
+422            R    <->   31             M   
+423            L    <->   29             L   
+424            G    <->   30             G   
+425            E    <->   23             E   
+426            S    <->   32             S   
+427            K    <->   35             A   
+428            Y    <->   36             I   
+429            L    <->   8              L   
+430            M    <->   41             Q   
+431            A    <->   15             A   
+432            L    <->   40             I   
+433            K    <->   9              K   
+434            N    <->   42             T   
+435            L    <->   43             L   
+436            C    <->   44             R   
+437            D    <->   45             D   
+438            L    <->   60             L   
+439            G    <->   47             G   
+440            I    <->   48             V   
+441            V    <->   50             V   
+442            D    <->   62             E   
+443            P    <->   61             P   
+446            P    <->   63             P   
+---------------------------------------------
+
+STEP 7: Filtering alignment...
+  - Raw alignment pairs: 63
+  - After isolation filter: 19 pairs
+  - After overlap resolver: 18 pairs
+
+--- Final Summary ---
+  Final number of aligned pairs: 18
+  Sequence Identity of final pairs: 50.00%
+
+--- Final Aligned Pairs ---
+SeqA PDB Num   AA   <->   SeqB PDB Num   AA  
+---------------------------------------------
+375            H    <->   1              M   
+383            Y    <->   58             Y   
+386            N    <->   4              N   
+392            V    <->   53             V   
+403            L    <->   11             I   
+406            I    <->   14             L   
+407            N    <->   16             N   
+412            T    <->   21             S   
+422            R    <->   31             M   
+426            S    <->   32             S   
+427            K    <->   35             A   
+434            N    <->   42             T   
+435            L    <->   43             L   
+436            C    <->   44             R   
+437            D    <->   45             D   
+440            I    <->   48             V   
+441            V    <->   50             V   
+446            P    <->   63             P   
+---------------------------------------------
+
+🎉 UniAlign-V6 process finished successfully!

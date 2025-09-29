@@ -1,0 +1,447 @@
+Some weights of EsmModel were not initialized from the model checkpoint at local_esm_model and are newly initialized: ['pooler.dense.bias', 'pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/unbalanced/_sinkhorn.py:738: RuntimeWarning: divide by zero encountered in divide
+  u = (a / Kv) ** fi_1
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/unbalanced/_sinkhorn.py:751: UserWarning: Numerical errors at iteration 0
+  warnings.warn("Numerical errors at iteration %s" % i)
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/gromov/_unbalanced.py:383: RuntimeWarning: divide by zero encountered in scalar divide
+  pi_feat = nx.sqrt(mass / nx.sum(pi_feat)) * pi_feat
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/gromov/_unbalanced.py:383: RuntimeWarning: invalid value encountered in multiply
+  pi_feat = nx.sqrt(mass / nx.sum(pi_feat)) * pi_feat
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/gromov/_unbalanced.py:410: RuntimeWarning: divide by zero encountered in scalar divide
+  pi_samp = nx.sqrt(mass / nx.sum(pi_samp)) * pi_samp  # shape nx x ny
+/Users/huyue/miniforge3/lib/python3.12/site-packages/ot/gromov/_unbalanced.py:410: RuntimeWarning: invalid value encountered in multiply
+  pi_samp = nx.sqrt(mass / nx.sum(pi_samp)) * pi_samp  # shape nx x ny
+[KeOps] Warning : CUDA libraries not found or could not be loaded; Switching to CPU only.
+✅ Found Apple Silicon GPU. Using MPS for acceleration.
+
+--- Configuration ---
+  Sequence A: d1nw5a_.pdb (Chain: auto)
+  Sequence B: d2adma_.pdb (Chain: auto)
+  Model Path: local_esm_model
+  Hyperparameters: alpha=0.9, reg_m=0.1, initial_epsilon=0.001
+---------------------
+STEP 1: Loading sequences...
+ℹ️ No chain specified for d1nw5a_.pdb, auto-selecting first available chain: 'A'
+ℹ️ No chain specified for d2adma_.pdb, auto-selecting first available chain: 'A'
+  - Loaded Sequence A: 270 residues.
+  - Loaded Sequence B: 385 residues.
+
+STEP 2: Loading ESM-2 model from 'local_esm_model'...
+
+STEP 3: Generating residue embeddings...
+
+STEP 4: Calculating matrices for FUGW solver...
+  - [Matrix Stats] Feature Cost (M): Min=0.120283, Max=0.920436, Mean=0.457874, Non-Zero=103950/103950 (100.00%)
+  - [Matrix Stats] Intra-Distance A (Cx): Min=0.000000, Max=1.000000, Mean=0.167906, Non-Zero=72630/72900 (99.63%)
+  - [Matrix Stats] Intra-Distance B (Cy): Min=0.000000, Max=1.000000, Mean=0.167535, Non-Zero=147840/148225 (99.74%)
+
+STEP 5: Running Fused Unbalanced Gromov-Wasserstein solver...
+  - Attempt 1/6 with epsilon = 1.0e-03...
+  - ⚠️ Solver failed on attempt 1: There is NaN in coupling.                           Adjust the relaxation or regularization parameters.
+  - Retrying with a larger epsilon...
+  - Attempt 2/6 with epsilon = 5.0e-03...
+  - ⚠️ Solver failed on attempt 2: There is NaN in coupling.                           Adjust the relaxation or regularization parameters.
+  - Retrying with a larger epsilon...
+  - Attempt 3/6 with epsilon = 2.5e-02...
+  - ⚠️ Solver failed on attempt 3: There is NaN in coupling.                           Adjust the relaxation or regularization parameters.
+  - Retrying with a larger epsilon...
+  - Attempt 4/6 with epsilon = 1.2e-01...
+  - Solver succeeded in 11.42 seconds.
+  - [Matrix Stats] Final Transport Plan (T): Min=0.000000, Max=0.000095, Mean=0.000004, Non-Zero=103950/103950 (100.00%)
+
+STEP 6: Extracting optimal 1-to-1 assignment...
+
+--- Raw Aligned Pairs (Before Filtering) ---
+SeqA PDB Num   AA   <->   SeqB PDB Num   AA  
+---------------------------------------------
+36             G    <->   81             P   
+37             T    <->   63             T   
+38             T    <->   386            T   
+39             R    <->   39             R   
+40             H    <->   65             Y   
+41             V    <->   66             R   
+42             Y    <->   345            W   
+43             D    <->   86             I   
+44             V    <->   87             L   
+45             C    <->   88             A   
+46             D    <->   89             D   
+47             C    <->   90             F   
+48             L    <->   91             L   
+49             D    <->   78             D   
+50             T    <->   30             F   
+51             L    <->   400            L   
+52             A    <->   29             D   
+53             K    <->   33             S   
+54             L    <->   403            L   
+55             P    <->   38             P   
+56             D    <->   367            D   
+57             D    <->   97             E   
+58             S    <->   98             A   
+59             V    <->   99             F   
+60             Q    <->   100            D   
+61             L    <->   101            L   
+62             I    <->   102            I   
+63             I    <->   103            L   
+64             C    <->   104            G   
+65             D    <->   105            N   
+66             P    <->   106            P   
+67             P    <->   107            P   
+68             Y    <->   108            Y   
+69             N    <->   109            G   
+70             I    <->   110            I   
+71             M    <->   399            M   
+72             L    <->   111            V   
+73             A    <->   121            V   
+74             D    <->   173            D   
+75             W    <->   133            F   
+76             D    <->   346            D   
+77             D    <->   390            D   
+78             H    <->   50             H   
+79             M    <->   137            K   
+80             D    <->   127            D   
+81             Y    <->   129            Y   
+82             I    <->   136            W   
+83             G    <->   214            G   
+84             W    <->   93             W   
+85             A    <->   145            A   
+86             K    <->   130            K   
+87             R    <->   152            R   
+88             W    <->   146            F   
+89             L    <->   147            L   
+90             A    <->   182            A   
+91             E    <->   148            E   
+92             A    <->   150            A   
+93             E    <->   151            V   
+94             R    <->   178            R   
+95             V    <->   153            L   
+96             L    <->   154            L   
+97             S    <->   155            K   
+98             P    <->   156            P   
+99             T    <->   339            T   
+100            G    <->   158            G   
+101            S    <->   159            V   
+102            I    <->   160            L   
+103            A    <->   161            V   
+104            I    <->   260            L   
+105            F    <->   162            F   
+106            G    <->   144            G   
+107            G    <->   301            G   
+108            L    <->   312            L   
+109            Q    <->   237            H   
+110            Y    <->   218            W   
+111            Q    <->   209            Q   
+112            G    <->   240            G   
+113            E    <->   239            E   
+114            A    <->   241            E   
+115            G    <->   212            G   
+116            S    <->   272            S   
+117            G    <->   311            G   
+118            D    <->   324            D   
+119            L    <->   322            L   
+120            I    <->   243            I   
+121            S    <->   188            S   
+122            I    <->   177            L   
+123            I    <->   266            I   
+124            S    <->   216            S   
+125            H    <->   180            F   
+126            M    <->   181            L   
+127            R    <->   183            R   
+128            Q    <->   221            Q   
+129            N    <->   308            N   
+130            S    <->   185            G   
+131            K    <->   131            K   
+132            M    <->   187            T   
+133            L    <->   176            L   
+134            L    <->   186            K   
+135            A    <->   132            A   
+136            N    <->   172            E   
+137            L    <->   217            L   
+138            I    <->   189            V   
+139            I    <->   190            Y   
+140            W    <->   168            W   
+141            N    <->   297            N   
+142            Y    <->   191            Y   
+143            P    <->   197            P   
+144            N    <->   194            E   
+145            G    <->   193            G   
+146            M    <->   258            M   
+147            S    <->   202            S   
+148            A    <->   195            V   
+149            Q    <->   198            Q   
+150            R    <->   267            R   
+151            F    <->   325            F   
+152            F    <->   351            P   
+153            A    <->   269            A   
+154            N    <->   200            K   
+155            R    <->   296            R   
+156            H    <->   201            V   
+157            E    <->   203            A   
+158            E    <->   204            V   
+159            I    <->   205            V   
+160            A    <->   206            I   
+161            W    <->   207            R   
+162            F    <->   208            F   
+163            A    <->   344            A   
+164            K    <->   210            K   
+165            T    <->   211            S   
+166            K    <->   283            K   
+167            K    <->   213            K   
+168            Y    <->   305            Y   
+169            F    <->   245            F   
+170            F    <->   196            F   
+171            D    <->   304            D   
+172            L    <->   192            L   
+173            D    <->   306            E   
+174            A    <->   327            A   
+175            V    <->   303            V   
+176            R    <->   323            R   
+177            E    <->   284            E   
+178            P    <->   229            P   
+179            Y    <->   275            F   
+180            D    <->   219            D   
+181            E    <->   248            E   
+182            E    <->   249            E   
+183            T    <->   228            T   
+184            K    <->   276            K   
+185            A    <->   233            A   
+186            A    <->   280            A   
+187            Y    <->   235            Y   
+188            M    <->   238            W   
+189            K    <->   277            K   
+190            D    <->   246            E   
+191            K    <->   320            K   
+192            R    <->   251            R   
+193            L    <->   215            L   
+194            N    <->   278            H   
+195            P    <->   279            P   
+196            E    <->   222            E   
+197            S    <->   223            S   
+198            V    <->   281            V   
+199            E    <->   224            E   
+200            K    <->   307            K   
+201            G    <->   257            G   
+202            R    <->   282            R   
+203            N    <->   242            I   
+204            P    <->   291            P   
+205            T    <->   328            T   
+206            N    <->   262            D   
+207            V    <->   292            V   
+208            W    <->   331            L   
+209            R    <->   244            R   
+210            M    <->   314            M   
+211            S    <->   310            S   
+212            R    <->   271            R   
+213            L    <->   298            L   
+214            N    <->   232            W   
+215            G    <->   112            G   
+216            N    <->   236            P   
+217            S    <->   273            P   
+218            L    <->   128            L   
+219            E    <->   274            E   
+220            R    <->   340            R   
+221            V    <->   290            V   
+222            G    <->   288            G   
+223            H    <->   143            Y   
+224            P    <->   329            P   
+225            T    <->   135            T   
+226            Q    <->   141            N   
+227            K    <->   23             T   
+228            P    <->   165            P   
+229            A    <->   270            A   
+230            A    <->   175            A   
+231            V    <->   27             V   
+232            I    <->   28             V   
+233            E    <->   179            E   
+234            R    <->   149            K   
+235            L    <->   375            L   
+236            V    <->   32             V   
+237            R    <->   385            R   
+238            A    <->   343            A   
+239            L    <->   263            L   
+240            S    <->   376            N   
+241            H    <->   309            H   
+242            P    <->   300            P   
+243            G    <->   157            G   
+244            S    <->   41             G   
+245            T    <->   42             R   
+246            V    <->   43             V   
+247            L    <->   44             L   
+248            D    <->   45             E   
+249            F    <->   46             P   
+250            F    <->   47             A   
+251            A    <->   48             C   
+252            G    <->   49             A   
+253            S    <->   377            S   
+254            G    <->   51             G   
+255            V    <->   164            V   
+256            T    <->   53             F   
+257            A    <->   54             L   
+258            R    <->   55             R   
+259            V    <->   56             A   
+260            A    <->   57             F   
+261            I    <->   230            I   
+262            Q    <->   59             E   
+263            E    <->   184            E   
+264            G    <->   96             G   
+265            R    <->   333            V   
+266            N    <->   84             E   
+267            S    <->   67             F   
+268            I    <->   68             V   
+269            C    <->   69             G   
+270            T    <->   70             V   
+271            D    <->   71             E   
+272            A    <->   72             I   
+273            A    <->   73             D   
+274            P    <->   74             P   
+275            V    <->   125            V   
+276            F    <->   76             A   
+277            K    <->   126            K   
+278            E    <->   317            E   
+279            Y    <->   350            Y   
+280            Y    <->   326            Y   
+281            Q    <->   373            Q   
+282            K    <->   382            K   
+283            Q    <->   381            Q   
+284            L    <->   77             L   
+285            T    <->   247            T   
+286            F    <->   321            E   
+287            L    <->   79             L   
+297            R    <->   407            R   
+298            S    <->   256            S   
+299            Y    <->   409            Y   
+300            E    <->   234            E   
+301            I    <->   255            I   
+302            V    <->   231            L   
+303            E    <->   254            E   
+304            G    <->   226            G   
+305            A    <->   250            T   
+306            A    <->   225            S   
+307            N    <->   252            K   
+308            F    <->   411            F   
+309            G    <->   410            G   
+310            A    <->   124            A   
+311            A    <->   408            E   
+312            L    <->   253            L   
+313            Q    <->   412            H   
+314            R    <->   413            T   
+---------------------------------------------
+
+STEP 7: Filtering alignment...
+  - Raw alignment pairs: 270
+  - After isolation filter: 115 pairs
+  - After overlap resolver: 103 pairs
+
+--- Final Summary ---
+  Final number of aligned pairs: 103
+  Sequence Identity of final pairs: 46.60%
+
+--- Final Aligned Pairs ---
+SeqA PDB Num   AA   <->   SeqB PDB Num   AA  
+---------------------------------------------
+40             H    <->   65             Y   
+41             V    <->   66             R   
+44             V    <->   87             L   
+45             C    <->   88             A   
+46             D    <->   89             D   
+47             C    <->   90             F   
+53             K    <->   33             S   
+58             S    <->   98             A   
+59             V    <->   99             F   
+60             Q    <->   100            D   
+61             L    <->   101            L   
+62             I    <->   102            I   
+63             I    <->   103            L   
+64             C    <->   104            G   
+65             D    <->   105            N   
+66             P    <->   106            P   
+67             P    <->   107            P   
+68             Y    <->   108            Y   
+69             N    <->   109            G   
+70             I    <->   110            I   
+73             A    <->   121            V   
+76             D    <->   346            D   
+81             Y    <->   129            Y   
+82             I    <->   136            W   
+89             L    <->   147            L   
+92             A    <->   150            A   
+93             E    <->   151            V   
+96             L    <->   154            L   
+97             S    <->   155            K   
+98             P    <->   156            P   
+101            S    <->   159            V   
+102            I    <->   160            L   
+103            A    <->   161            V   
+105            F    <->   162            F   
+107            G    <->   301            G   
+110            Y    <->   218            W   
+116            S    <->   272            S   
+117            G    <->   311            G   
+119            L    <->   322            L   
+121            S    <->   188            S   
+124            S    <->   216            S   
+126            M    <->   181            L   
+127            R    <->   183            R   
+128            Q    <->   221            Q   
+136            N    <->   172            E   
+144            N    <->   194            E   
+147            S    <->   202            S   
+149            Q    <->   198            Q   
+150            R    <->   267            R   
+151            F    <->   325            F   
+157            E    <->   203            A   
+158            E    <->   204            V   
+159            I    <->   205            V   
+160            A    <->   206            I   
+161            W    <->   207            R   
+162            F    <->   208            F   
+165            T    <->   211            S   
+169            F    <->   245            F   
+173            D    <->   306            E   
+188            M    <->   238            W   
+192            R    <->   251            R   
+194            N    <->   278            H   
+197            S    <->   223            S   
+204            P    <->   291            P   
+207            V    <->   292            V   
+211            S    <->   310            S   
+214            N    <->   232            W   
+216            N    <->   236            P   
+219            E    <->   274            E   
+221            V    <->   290            V   
+228            P    <->   165            P   
+230            A    <->   175            A   
+232            I    <->   28             V   
+238            A    <->   343            A   
+245            T    <->   42             R   
+246            V    <->   43             V   
+247            L    <->   44             L   
+248            D    <->   45             E   
+249            F    <->   46             P   
+250            F    <->   47             A   
+251            A    <->   48             C   
+252            G    <->   49             A   
+257            A    <->   54             L   
+258            R    <->   55             R   
+259            V    <->   56             A   
+260            A    <->   57             F   
+266            N    <->   84             E   
+268            I    <->   68             V   
+269            C    <->   69             G   
+270            T    <->   70             V   
+271            D    <->   71             E   
+272            A    <->   72             I   
+273            A    <->   73             D   
+274            P    <->   74             P   
+277            K    <->   126            K   
+278            E    <->   317            E   
+281            Q    <->   373            Q   
+283            Q    <->   381            Q   
+285            T    <->   247            T   
+307            N    <->   252            K   
+309            G    <->   410            G   
+313            Q    <->   412            H   
+314            R    <->   413            T   
+---------------------------------------------
+
+🎉 UniAlign-V6 process finished successfully!

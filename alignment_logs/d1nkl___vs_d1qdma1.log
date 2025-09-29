@@ -1,0 +1,184 @@
+Some weights of EsmModel were not initialized from the model checkpoint at local_esm_model and are newly initialized: ['pooler.dense.bias', 'pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[KeOps] Warning : CUDA libraries not found or could not be loaded; Switching to CPU only.
+✅ Found Apple Silicon GPU. Using MPS for acceleration.
+
+--- Configuration ---
+  Sequence A: d1nkl__.pdb (Chain: auto)
+  Sequence B: d1qdma1.pdb (Chain: auto)
+  Model Path: local_esm_model
+  Hyperparameters: alpha=0.9, reg_m=0.1, initial_epsilon=0.001
+---------------------
+STEP 1: Loading sequences...
+ℹ️ No chain specified for d1nkl__.pdb, auto-selecting first available chain: 'A'
+ℹ️ No chain specified for d1qdma1.pdb, auto-selecting first available chain: 'A'
+  - Loaded Sequence A: 78 residues.
+  - Loaded Sequence B: 77 residues.
+
+STEP 2: Loading ESM-2 model from 'local_esm_model'...
+
+STEP 3: Generating residue embeddings...
+
+STEP 4: Calculating matrices for FUGW solver...
+  - [Matrix Stats] Feature Cost (M): Min=0.080743, Max=0.631157, Mean=0.333409, Non-Zero=6006/6006 (100.00%)
+  - [Matrix Stats] Intra-Distance A (Cx): Min=0.000000, Max=1.000000, Mean=0.170996, Non-Zero=6006/6084 (98.72%)
+  - [Matrix Stats] Intra-Distance B (Cy): Min=0.000000, Max=1.000000, Mean=0.171053, Non-Zero=5852/5929 (98.70%)
+
+STEP 5: Running Fused Unbalanced Gromov-Wasserstein solver...
+  - Attempt 1/6 with epsilon = 1.0e-03...
+  - Solver succeeded in 0.15 seconds.
+  - [Matrix Stats] Final Transport Plan (T): Min=0.000000, Max=0.011796, Mean=0.000103, Non-Zero=6006/6006 (100.00%)
+
+STEP 6: Extracting optimal 1-to-1 assignment...
+
+--- Raw Aligned Pairs (Before Filtering) ---
+SeqA PDB Num   AA   <->   SeqB PDB Num   AA  
+---------------------------------------------
+1              G    <->   104S           P   
+2              Y    <->   102S           R   
+3              F    <->   103S           L   
+4              C    <->   69S            C   
+5              E    <->   101S           N   
+6              S    <->   99S            L   
+7              C    <->   72S            C   
+8              R    <->   73S            E   
+9              K    <->   74S            M   
+10             I    <->   75S            A   
+11             I    <->   76S            V   
+12             Q    <->   77S            V   
+13             K    <->   78S            W   
+14             L    <->   79S            M   
+15             E    <->   80S            Q   
+16             D    <->   81S            N   
+17             M    <->   82S            Q   
+18             V    <->   83S            L   
+19             G    <->   84S            A   
+20             P    <->   85S            Q   
+21             Q    <->   86S            N   
+22             P    <->   87S            K   
+23             N    <->   88S            T   
+24             E    <->   89S            Q   
+25             D    <->   90S            D   
+26             T    <->   91S            L   
+27             V    <->   92S            I   
+28             T    <->   93S            L   
+29             Q    <->   94S            D   
+30             A    <->   95S            Y   
+31             A    <->   96S            V   
+32             S    <->   97S            N   
+33             Q    <->   98S            Q   
+34             V    <->   1S             V   
+35             C    <->   100S           C   
+36             D    <->   66S            D   
+37             K    <->   33S            Q   
+38             L    <->   36S            L   
+40             I    <->   67S            P   
+41             L    <->   68S            M   
+42             R    <->   65S            A   
+43             G    <->   70S            S   
+44             L    <->   71S            A   
+45             C    <->   6S             C   
+46             K    <->   7S             K   
+47             K    <->   8S             T   
+48             I    <->   9S             I   
+49             M    <->   10S            V   
+50             R    <->   11S            S   
+51             S    <->   12S            Q   
+52             F    <->   13S            Y   
+53             L    <->   14S            G   
+54             R    <->   15S            Q   
+55             R    <->   16S            Q   
+56             I    <->   17S            I   
+57             S    <->   18S            L   
+58             W    <->   19S            D   
+59             D    <->   20S            L   
+60             I    <->   21S            L   
+61             L    <->   22S            L   
+62             T    <->   23S            A   
+63             G    <->   24S            E   
+64             K    <->   25S            T   
+65             K    <->   26S            Q   
+66             P    <->   27S            P   
+67             Q    <->   28S            K   
+68             A    <->   29S            K   
+69             I    <->   30S            I   
+70             C    <->   31S            C   
+71             V    <->   32S            S   
+72             D    <->   3S             S   
+73             I    <->   34S            V   
+74             K    <->   35S            G   
+75             I    <->   2S             V   
+76             C    <->   37S            C   
+77             K    <->   4S             Q   
+78             E    <->   5S             E   
+---------------------------------------------
+
+STEP 7: Filtering alignment...
+  - Raw alignment pairs: 77
+  - After isolation filter: 58 pairs
+  - After overlap resolver: 54 pairs
+
+--- Final Summary ---
+  Final number of aligned pairs: 54
+  Sequence Identity of final pairs: 16.67%
+
+--- Final Aligned Pairs ---
+SeqA PDB Num   AA   <->   SeqB PDB Num   AA  
+---------------------------------------------
+8              R    <->   73S            E   
+9              K    <->   74S            M   
+10             I    <->   75S            A   
+11             I    <->   76S            V   
+12             Q    <->   77S            V   
+13             K    <->   78S            W   
+14             L    <->   79S            M   
+15             E    <->   80S            Q   
+16             D    <->   81S            N   
+17             M    <->   82S            Q   
+18             V    <->   83S            L   
+19             G    <->   84S            A   
+20             P    <->   85S            Q   
+21             Q    <->   86S            N   
+22             P    <->   87S            K   
+23             N    <->   88S            T   
+24             E    <->   89S            Q   
+25             D    <->   90S            D   
+26             T    <->   91S            L   
+27             V    <->   92S            I   
+28             T    <->   93S            L   
+29             Q    <->   94S            D   
+30             A    <->   95S            Y   
+31             A    <->   96S            V   
+32             S    <->   97S            N   
+38             L    <->   36S            L   
+40             I    <->   67S            P   
+43             G    <->   70S            S   
+46             K    <->   7S             K   
+47             K    <->   8S             T   
+48             I    <->   9S             I   
+49             M    <->   10S            V   
+50             R    <->   11S            S   
+51             S    <->   12S            Q   
+52             F    <->   13S            Y   
+53             L    <->   14S            G   
+54             R    <->   15S            Q   
+55             R    <->   16S            Q   
+56             I    <->   17S            I   
+57             S    <->   18S            L   
+58             W    <->   19S            D   
+59             D    <->   20S            L   
+60             I    <->   21S            L   
+61             L    <->   22S            L   
+62             T    <->   23S            A   
+63             G    <->   24S            E   
+64             K    <->   25S            T   
+65             K    <->   26S            Q   
+66             P    <->   27S            P   
+67             Q    <->   28S            K   
+68             A    <->   29S            K   
+69             I    <->   30S            I   
+70             C    <->   31S            C   
+73             I    <->   34S            V   
+---------------------------------------------
+
+🎉 UniAlign-V6 process finished successfully!
